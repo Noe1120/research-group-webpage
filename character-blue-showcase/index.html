@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="淡蓝色人物立绘独立展示页">
+  <title>记忆书页 · 角色立绘试映</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">研</span>
+      <span><strong>角色试映</strong><small>MEMORY ARCHIVE / 04</small></span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-button" id="themeButton" type="button" aria-label="切换深蓝背景" aria-pressed="false" title="切换背景">◐</button>
+      <button class="icon-button" id="openPreview" type="button" aria-label="查看透明人物原图" title="透明原图">⛶</button>
+    </div>
+  </header>
+
+  <main class="showcase" id="top">
+    <div class="axis axis-x" aria-hidden="true"></div>
+    <div class="axis axis-y" aria-hidden="true"></div>
+    <span class="archive-number" aria-hidden="true">04</span>
+    <span class="spark spark-one" aria-hidden="true">✦</span>
+    <span class="spark spark-two" aria-hidden="true">✧</span>
+    <span class="spark spark-three" aria-hidden="true">✦</span>
+
+    <section class="hero-copy" aria-labelledby="page-title">
+      <p class="eyebrow"><span></span> CHARACTER / MEMORY KEEPER</p>
+      <h1 id="page-title">把漫长的时间，<br><em>读成一页。</em></h1>
+      <p class="lede">书页、魔法与旅途的记忆，在淡蓝色的安静时刻里重新展开。</p>
+      <div class="tag-row" aria-label="角色关键词">
+        <span>MAGIC</span><span>MEMORY</span><span>JOURNEY</span>
+      </div>
+      <button class="primary-button" id="openPreviewText" type="button">查看透明原图 <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <section class="character-stage" aria-label="人物立绘展示">
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="floating-note note-one"><small>SPELL INDEX</small><strong>001 / MEMORY</strong></div>
+      <div class="floating-note note-two"><small>ARCHIVE</small><strong>LONG JOURNEY</strong></div>
+      <div class="character-shadow" aria-hidden="true"></div>
+      <img class="character-image" src="images/character.png" alt="怀抱书本与卷轴的白发动漫人物透明立绘">
+    </section>
+
+    <footer class="info-strip">
+      <span>BLUE ARCHIVE STUDY</span>
+      <p>独立人物试映页面 · 未接入科研组官网</p>
+      <span>2026 / AUTUMN</span>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <button class="lightbox-backdrop" type="button" data-close aria-label="关闭预览"></button>
+    <div class="lightbox-panel">
+      <div class="lightbox-head">
+        <div><small>TRANSPARENT PNG</small><h2 id="previewTitle">人物透明原图</h2></div>
+        <button class="close-button" type="button" data-close aria-label="关闭预览" title="关闭">×</button>
+      </div>
+      <div class="checkerboard"><img src="images/character.png" alt="透明背景人物原图"></div>
+      <p>1170 × 1912 px</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

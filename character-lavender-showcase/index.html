@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="淡紫花海人物独立展示页">
+  <title>紫罗兰书页 · 角色立绘试映</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">研</span>
+      <span><strong>角色试映</strong><small>LETTER ARCHIVE / 05</small></span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-button" id="themeButton" type="button" aria-label="切换夜间背景" aria-pressed="false" title="切换背景">◐</button>
+      <button class="icon-button" id="openPreview" type="button" aria-label="查看人物原图" title="查看原图">⛶</button>
+    </div>
+  </header>
+
+  <main class="showcase" id="top">
+    <div class="lavender-band" aria-hidden="true"></div>
+    <div class="guide-line guide-line-x" aria-hidden="true"></div>
+    <div class="guide-line guide-line-y" aria-hidden="true"></div>
+    <span class="archive-number" aria-hidden="true">05</span>
+
+    <section class="hero-copy" aria-labelledby="page-title">
+      <p class="eyebrow"><span></span> LETTER / MEMORY / JOURNEY</p>
+      <h1 id="page-title">把未说出口的话，<br><em>写成一封信。</em></h1>
+      <p class="lede">让每一次相遇都有回音，也让遥远的心意穿过紫罗兰盛开的原野。</p>
+      <div class="tag-row" aria-label="角色关键词">
+        <span>LETTER</span><span>MEMORY</span><span>VIOLET</span>
+      </div>
+      <button class="primary-button" id="openPreviewText" type="button">查看完整画面 <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <section class="art-stage" aria-label="淡紫花海中的金发动漫人物">
+      <img class="character-image" src="images/character.png" alt="站在淡紫色花海中的金发蓝眼动漫人物">
+      <div class="stage-note note-one"><small>POSTMARK</small><strong>04 / 10</strong></div>
+      <div class="stage-note note-two"><small>ARCHIVE</small><strong>WORDS REACH HEARTS</strong></div>
+    </section>
+
+    <div class="petal-field" aria-hidden="true"></div>
+
+    <footer class="info-strip">
+      <span>VIOLET FIELD STUDY</span>
+      <p>独立人物试映页面 · 未接入科研组官网</p>
+      <span>2026 / AUTUMN</span>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <button class="lightbox-backdrop" type="button" data-close aria-label="关闭预览"></button>
+    <div class="lightbox-panel">
+      <div class="lightbox-head">
+        <div><small>ORIGINAL IMAGE</small><h2 id="previewTitle">完整人物画面</h2></div>
+        <button class="close-button" type="button" data-close aria-label="关闭预览" title="关闭">×</button>
+      </div>
+      <div class="preview-frame"><img src="images/character.png" alt="淡紫花海人物完整原图"></div>
+      <p>1170 × 1488 px</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

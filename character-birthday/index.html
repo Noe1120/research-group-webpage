@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="科研组二次元角色生日插画独立展示页">
+  <title>生日插画试映 · 科研组</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="confetti-field" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回页面顶部">
+      <span class="brand-mark">研</span>
+      <span><strong>科研组</strong><small>CHARACTER MOMENT / 02</small></span>
+    </a>
+    <span class="header-note">BIRTHDAY MEMORY</span>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> DAILY MOMENT / 角色日常</p>
+        <h1>今天的快乐，<br><em>值得被记住。</em></h1>
+        <p class="lede">比起正式立绘，这张插画更像一次贴近角色的生活切片。柔软、明亮，也保留了画面里的手写祝福。</p>
+        <div class="tag-row"><span>CASUAL</span><span>BIRTHDAY</span><span>HAND DRAWN</span></div>
+        <button class="view-button" id="viewButton" type="button">查看完整插画 <span>↗</span></button>
+      </div>
+
+      <div class="art-stage">
+        <span class="tape tape-one" aria-hidden="true"></span>
+        <span class="tape tape-two" aria-hidden="true"></span>
+        <button class="artwork" id="artworkButton" type="button" aria-label="放大查看完整插画">
+          <img src="images/birthday-character.jpg" alt="穿粉色外套、笑着比手势的动漫角色生日插画">
+          <span class="artwork-hint">OPEN IMAGE ↗</span>
+        </button>
+        <div class="caption"><span>2026.04.16</span><strong>A BRIGHT LITTLE MEMORY</strong></div>
+        <span class="spark spark-one" aria-hidden="true">✦</span>
+        <span class="spark spark-two" aria-hidden="true">✧</span>
+      </div>
+    </section>
+
+    <section class="moment-strip">
+      <div class="section-shell moment-inner">
+        <span>SMILE</span><i></i><span>CELEBRATE</span><i></i><span>REMEMBER</span><i></i><span>SHARE</span>
+      </div>
+    </section>
+
+    <section class="usage section-shell">
+      <div><span class="section-index">CHARACTER NOTE / 02</span><h2>更轻松的角色侧面</h2></div>
+      <p>适合放在活动记录、成员生日、节日问候或招新动态等更具生活感的页面中，与正式的科研主视觉形成区别。</p>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="完整生日插画" hidden>
+    <div class="lightbox-backdrop" data-close></div>
+    <div class="lightbox-panel">
+      <button class="close-button" type="button" data-close aria-label="关闭插画预览">×</button>
+      <img src="images/birthday-character.jpg" alt="完整生日插画">
+      <p>ORIGINAL ARTWORK · 863 × 861</p>
+    </div>
+  </div>
+
+  <footer class="site-footer section-shell"><span>科研组 · 独立角色试映</span><span>NOT CONNECTED TO OFFICIAL SITE</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="科研组角色透明立绘独立展示页">
+  <title>角色立绘试映 · 科研组</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="petal-field" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">研</span>
+      <span><strong>科研组</strong><small>CHARACTER TEST STAGE</small></span>
+    </a>
+    <div class="mode-switch" aria-label="预览背景">
+      <button class="mode-button active" type="button" data-mode="light">浅色</button>
+      <button class="mode-button" type="button" data-mode="dark">深色</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="stage section-shell">
+      <div class="stage-copy">
+        <p class="eyebrow"><span></span> CHARACTER / 01</p>
+        <h1>闪耀地，<br><em>滑向下一站。</em></h1>
+        <p class="lede">完整保留人物动作与服装细节，移除原图白色背景。现在她可以自然地出现在网页的不同场景里。</p>
+        <div class="tag-row"><span>FIGURE SKATING</span><span>STAGE COSTUME</span><span>FULL BODY</span></div>
+        <button class="preview-button" type="button" id="previewButton">查看透明原图 <span>↗</span></button>
+      </div>
+
+      <div class="character-scene" aria-label="透明背景角色立绘展示">
+        <div class="scene-label label-one"><small>MOTION</small><strong>轻盈 / 自由</strong></div>
+        <div class="scene-label label-two"><small>COLOR</small><strong>粉彩 / 金色</strong></div>
+        <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span><span class="spark spark-three">✦</span>
+        <div class="character-shadow"></div>
+        <img class="character-image" src="images/character-cutout.png" alt="穿着粉彩舞台服装、张开双臂的花样滑冰动漫角色">
+        <div class="scene-number" aria-hidden="true">01</div>
+      </div>
+    </section>
+
+    <section class="detail-strip">
+      <div class="section-shell detail-inner">
+        <span>RESEARCH · CREATE · SHARE</span>
+        <p>独立角色试映页面 / 未接入科研组官网</p>
+        <span>2026 / AUTUMN</span>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="透明人物原图" hidden>
+    <div class="lightbox-backdrop" data-close></div>
+    <div class="lightbox-panel">
+      <button class="close-button" type="button" data-close aria-label="关闭预览">×</button>
+      <div class="checkerboard"><img src="images/character-cutout.png" alt="透明背景人物原图"></div>
+      <p>透明 PNG · 863 × 1619</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
