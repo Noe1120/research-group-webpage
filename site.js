@@ -2,6 +2,22 @@ const body = document.body;
 const themeToggle = document.querySelector('#themeToggle');
 const menuToggle = document.querySelector('#menuToggle');
 const mainNav = document.querySelector('#mainNav');
+const easterEggAnswer = 'ky是科协的，他很帅';
+
+function openHiddenEasterEgg(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const answer = window.prompt('隐藏彩蛋');
+  if (answer?.trim() === easterEggAnswer) {
+    window.location.href = new URL('cartoon-cycling.html', document.baseURI).href;
+  }
+}
+
+document.querySelectorAll('.site-footer .brand-mark').forEach((trigger) => {
+  trigger.setAttribute('aria-label', '打开隐藏彩蛋');
+  trigger.addEventListener('click', openHiddenEasterEgg);
+});
 
 function createPetalField() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -29,9 +45,11 @@ function createPetalField() {
   document.body.prepend(layer);
 }
 
-if (localStorage.getItem('research-theme') === 'dark') body.classList.add('dark');
+let savedTheme = null;
+try { savedTheme = window.localStorage.getItem('research-theme'); } catch (error) { /* file:// pages may block storage access. */ }
+if (savedTheme === 'dark') body.classList.add('dark');
 const syncThemeIcon = () => { if (themeToggle) themeToggle.textContent = body.classList.contains('dark') ? '☾' : '☼'; };
-themeToggle?.addEventListener('click', () => { body.classList.toggle('dark'); localStorage.setItem('research-theme', body.classList.contains('dark') ? 'dark' : 'light'); syncThemeIcon(); });
+themeToggle?.addEventListener('click', () => { body.classList.toggle('dark'); try { window.localStorage.setItem('research-theme', body.classList.contains('dark') ? 'dark' : 'light'); } catch (error) { /* file:// pages may block storage access. */ } syncThemeIcon(); });
 menuToggle?.addEventListener('click', () => { const open = mainNav.classList.toggle('nav-open'); menuToggle.textContent = open ? '×' : '☰'; menuToggle.setAttribute('aria-expanded', String(open)); });
 syncThemeIcon();
 createPetalField();

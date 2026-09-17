@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8f0ea">
+  <meta name="description" content="一位戴细框眼镜、留蓬松黑发、穿浅灰连帽外套的卡通青年，在公园里骑着珊瑚红自行车。">
+  <title>骑个好心情 · 午后骑行</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #e8f0ea;
+      --ink: #29443d;
+      --muted: #667e70;
+      --sky: #d9efe8;
+      --leaf: #81ae85;
+      --sun: #ffd978;
+      --coral: #ed7865;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { width: min(1180px, calc(100% - 80px)); padding: 32px 0 25px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 5px 21px; }
+    .identity { display: flex; align-items: center; gap: 13px; }
+    .mark { width: 39px; height: 39px; flex: 0 0 auto; }
+    h1 { margin: 0; font-family: "YouYuan", "Yuanti SC", "Microsoft YaHei", sans-serif; font-size: 25px; letter-spacing: 3px; font-weight: 700; }
+    .subtitle { margin: 5px 0 0; font-family: "Trebuchet MS", sans-serif; color: var(--muted); font-size: 10px; letter-spacing: 3.1px; }
+    .weather { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; letter-spacing: 2px; white-space: nowrap; }
+    .weather::before { content: ""; width: 7px; height: 7px; background: var(--leaf); border-radius: 50%; }
+    .scene { margin: 0; aspect-ratio: 1200 / 760; overflow: hidden; border-radius: 28px; background: var(--sky); position: relative; isolation: isolate; }
+    #ride-scene { display: block; width: 100%; height: 100%; }
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 5px 0; }
+    .caption { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: 1.5px; line-height: 1.8; }
+    button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 17px; border: 1px solid #b6c9bb; border-radius: 999px; color: var(--ink); background: transparent; font: inherit; font-size: 12px; letter-spacing: 1px; cursor: pointer; transition: background 150ms, border-color 150ms; white-space: nowrap; }
+    button:hover { background: #dce9df; border-color: #7f9c87; }
+    button:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    button svg { width: 14px; height: 14px; }
+    button[hidden], [hidden] { display: none !important; }
+    @media (max-width: 650px) {
+      main { width: calc(100% - 28px); padding: 22px 0; }
+      .masthead { margin: 0 4px 18px; }
+      .identity { gap: 10px; }
+      .mark { width: 32px; height: 32px; }
+      h1 { font-size: 21px; letter-spacing: 2px; }
+      .subtitle { font-size: 8px; letter-spacing: 2.4px; }
+      .weather { font-size: 10px; letter-spacing: 1px; gap: 6px; }
+      .scene { aspect-ratio: 9 / 10; max-height: 74svh; border-radius: 22px; }
+      .footer { padding: 15px 3px 0; gap: 10px; }
+      .caption { font-size: 10px; letter-spacing: .5px; }
+      button { padding: 10px 12px; font-size: 11px; }
+    }
+    @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div class="identity">
+        <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <path d="M9 29.5h8.5L25 16l7.5 13.5H17.5L12 19H8m15-3h5m-14 3h5" stroke="#29443d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="30" r="7" stroke="#29443d" stroke-width="1.8"/>
+          <circle cx="33" cy="30" r="7" stroke="#29443d" stroke-width="1.8"/>
+          <circle cx="33" cy="9" r="4" fill="#ed7865"/>
+        </svg>
+        <div><h1>骑个好心情</h1><p class="subtitle">A LITTLE RIDE, A LOVELY DAY</p></div>
+      </div>
+      <span class="weather">今日宜 · 兜风</span>
+    </header>
+
+    <figure class="scene" aria-label="参考照片人物绘制的公园骑行插画">
+      <!-- All artwork is editable inline SVG. No photographs, fonts or network assets are loaded. -->
+      <svg id="ride-scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="scene-title scene-desc">
+        <title id="scene-title">微风里的骑行少年</title>
+        <desc id="scene-desc">根据两张参考照片中的外形绘制：蓬松的黑色卷发、深色细框眼镜、浅灰色敞开连帽外套和白色上衣。人物微笑着骑一辆珊瑚红自行车，背景是阳光、绿树和公园小路。车轮和双腿随骑行一起运动，画面下方可暂停。</desc>
+        <defs>
+          <linearGradient id="sky-fill" x2="0" y2="1">
+            <stop stop-color="#d9efe8"/><stop offset="1" stop-color="#edf4dc"/>
+          </linearGradient>
+          <linearGradient id="hoodie-fill" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#f0f1eb"/><stop offset="1" stop-color="#cad5d1"/>
+          </linearGradient>
+          <linearGradient id="hair-fill" x1="0" y1="0" x2=".6" y2="1">
+            <stop stop-color="#45423f"/><stop offset="1" stop-color="#292b29"/>
+          </linearGradient>
+          <linearGradient id="skin-fill" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#f5ceac"/><stop offset="1" stop-color="#eebd9b"/>
+          </linearGradient>
+          <pattern id="road-marks" width="220" height="16" patternUnits="userSpaceOnUse">
+            <path d="M20 8h92" stroke="#f7f5df" stroke-width="5" stroke-linecap="round"/>
+          </pattern>
+          <g id="spokes" stroke="#889d95" stroke-width="1.65" opacity=".85">
+            <path d="M-86 0H86M0-86V86M-60.8-60.8L60.8 60.8M-60.8 60.8L60.8-60.8M-79.5-32.9L79.5 32.9M-79.5 32.9L79.5-32.9M-32.9-79.5L32.9 79.5M-32.9 79.5L32.9-79.5"/>
+            <path d="M-8-75v17" stroke="#edaa77" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <g id="shoe" stroke="#4c5b55" stroke-width="2.3" stroke-linejoin="round">
+            <path d="M-13-4L3-6 12 2 28 4Q37 5 38 15L-17 15Q-18 3-13-4Z" fill="#fbf7e6"/>
+            <path d="M-17 12Q11 16 38 12L38 18Q9 21-17 17Z" fill="#e4e7d9"/>
+            <path d="M0-1L8 4M6 0L14 5M12 2L20 6" fill="none" stroke="#a0aaa0" stroke-width="1.7"/>
+            <path d="M-11 2L-7 8" fill="none" stroke="#ed7865" stroke-width="3"/>
+          </g>
+          <g id="daisy">
+            <path d="M0 0v21M0 13Q-10 4-13 12Q-7 17 0 17" fill="#76a27b" stroke="#679672" stroke-width="2"/>
+            <g fill="#fff9df"><ellipse cy="-5" rx="3" ry="6"/><ellipse cy="5" rx="3" ry="6"/><ellipse cx="-5" rx="6" ry="3"/><ellipse cx="5" rx="6" ry="3"/></g>
+            <circle r="3.3" fill="#e7b451"/>
+          </g>
+        </defs>
+
+        <!-- Quiet, layered park landscape. -->
+        <rect width="1200" height="760" fill="url(#sky-fill)"/>
+        <g id="sun" transform="translate(925 144)">
+          <g stroke="#ebcb75" stroke-width="2.5" stroke-linecap="round" opacity=".7">
+            <path d="M0-82v-9M0 82v9M82 0h9M-82 0h-9M58-58l7-7M58 58l7 7M-58-58l-7-7M-58 58l-7 7"/>
+          </g>
+          <circle r="62" fill="#ffd978"/>
+          <circle cx="-17" cy="-18" r="7" fill="#ffe6a0" opacity=".7"/>
+        </g>
+        <g id="cloud-left" fill="#f7faf0" opacity=".88">
+          <path d="M94 179Q76 163 97 151Q95 128 120 128Q130 107 153 119Q174 119 177 143Q205 140 210 159Q218 180 193 180Z"/>
+          <path d="M264 97Q253 87 266 80Q269 63 286 69Q300 54 317 69Q337 70 335 84Q357 94 339 103H275Z" opacity=".75"/>
+        </g>
+        <g id="cloud-right" fill="#f7faf0" opacity=".8">
+          <path d="M984 265Q971 250 989 241Q984 220 1007 216Q1019 197 1040 211Q1064 210 1068 233Q1097 229 1106 250Q1111 265 1092 266Z"/>
+        </g>
+        <g fill="none" stroke="#789f91" stroke-width="2.5" stroke-linecap="round">
+          <path d="M381 174q10-11 20 0q9-10 18-1M428 142q7-8 14 0q7-8 14 0"/>
+        </g>
+        <path d="M0 417Q131 313 277 373T532 393Q684 294 830 366T1200 329V620H0Z" fill="#c2ddbd"/>
+        <path d="M0 479Q165 389 342 450T672 434Q828 374 988 429T1200 415V631H0Z" fill="#aecdac"/>
+        <path d="M0 520Q255 463 454 502T826 486Q1037 449 1200 495V662H0Z" fill="#98bd96"/>
+        <g stroke="#91b18f" fill="#dce9ca" stroke-width="2.5">
+          <path d="M128 398h145v80H128Z"/>
+          <path d="M114 399l87-49 86 49Z" fill="#abc7a3"/>
+          <path d="M184 433h29v45h-29Z" fill="#b1c6aa"/>
+          <path d="M143 416h21v23h-21ZM233 416h21v23h-21Z" fill="#b1c6aa"/>
+        </g>
+        <g fill="#8fb990">
+          <path d="M296 472q-4-64 22-81q28 17 26 81Z"/><path d="M331 484q-2-45 18-57q23 11 20 57Z"/>
+          <path d="M937 472q-3-67 27-88q32 20 29 88Z"/>
+        </g>
+        <g stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 576L62 299M57 412L10 376M61 362l46-49" fill="none" stroke="#668b70" stroke-width="12"/>
+          <path d="M-40 367Q-84 326-44 281Q-64 232-11 210Q-9 164 43 169Q81 132 115 177Q168 170 172 222Q210 250 179 289Q181 340 132 348Q87 388 48 354Q5 389-40 367Z" fill="#83ae88"/>
+          <path d="M-6 255q24-31 50-7M72 208q21-17 38 2M95 301q26-34 52-17" fill="none" stroke="#a0c098" stroke-width="5"/>
+          <path d="M1106 570L1114 288M1110 412L1063 358M1113 368l51-47" fill="none" stroke="#64886d" stroke-width="12"/>
+          <path d="M1034 374Q989 352 1007 307Q977 271 1014 239Q1008 186 1059 183Q1087 139 1124 168Q1174 139 1197 187Q1241 187 1245 230Q1284 263 1250 303Q1260 357 1207 364Q1171 405 1133 373Q1078 404 1034 374Z" fill="#7fa882"/>
+          <path d="M1038 257q17-26 43-12M1100 200q24-20 44-1M1161 297q28-21 46-1" fill="none" stroke="#9bb98e" stroke-width="5"/>
+          <path d="M1018 560q-22-46-48-29q-26-5-33 31M1065 567q-19-58-49-33q-23 0-21 31M1180 568q-3-56-35-42q-28-22-45 35" fill="#74a17b"/>
+        </g>
+        <path d="M0 581Q179 566 395 584T816 578Q1037 561 1200 581V760H0Z" fill="#e4d8b7"/>
+        <path d="M0 577Q191 563 398 581T818 575Q1035 558 1200 578" fill="none" stroke="#f3ebd0" stroke-width="8"/>
+        <path d="M0 733Q266 709 526 738T994 731Q1110 725 1200 733V760H0Z" fill="#afc898"/>
+        <rect x="0" y="699" width="1200" height="16" fill="url(#road-marks)"/>
+        <g fill="#c6b998" opacity=".7">
+          <ellipse cx="188" cy="637" rx="4" ry="2"/><ellipse cx="958" cy="666" rx="5" ry="2"/>
+          <ellipse cx="290" cy="676" rx="3" ry="1.5"/><ellipse cx="1066" cy="611" rx="3.5" ry="1.5"/>
+        </g>
+        <g stroke="#6d9a75" stroke-width="2.5" stroke-linecap="round" fill="none">
+          <path d="M137 570l-5-18m5 18 7-12M281 569l-4-11m4 11 6-16M947 564l-5-14m5 14 7-9M101 730l-7-16m7 16 9-12M1085 735l-8-17m8 17 11-11"/>
+        </g>
+        <use href="#daisy" x="161" y="547"/><use href="#daisy" x="180" y="555" transform="rotate(12 180 555)"/>
+        <use href="#daisy" x="1023" y="547"/><use href="#daisy" x="1050" y="554" transform="rotate(-12 1050 554)"/>
+
+        <ellipse id="bike-shadow" cx="629" cy="681" rx="275" ry="14" fill="#807e61" opacity=".14"/>
+
+        <!-- Far leg stays behind the bicycle; the foreground leg is rendered after the frame. -->
+        <g id="far-leg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path id="far-pants-outline" d="M546 449L636 488L585 556" stroke="#374a49" stroke-width="38"/>
+          <path id="far-pants" d="M546 449L636 488L585 556" stroke="#4e6060" stroke-width="32"/>
+          <path id="far-sock" d="M585 550L585 559" stroke="#d8decf" stroke-width="19"/>
+        </g>
+        <g id="far-shoe" transform="translate(585 559) rotate(-5)"><use href="#shoe"/></g>
+
+        <!-- Coral city bicycle, with separate spoke assemblies for true axle rotation. -->
+        <g id="bicycle" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="translate(442 579)">
+            <circle r="98" fill="#d7e2c8" fill-opacity=".16" stroke="#334943" stroke-width="11"/>
+            <circle r="89" fill="none" stroke="#f3e5bd" stroke-width="5"/>
+            <g id="rear-spokes"><use href="#spokes"/></g>
+            <circle r="11" fill="#96aaa0" stroke="#52695f" stroke-width="2"/>
+            <circle r="4" fill="#edf0de"/>
+          </g>
+          <g transform="translate(824 579)">
+            <circle r="98" fill="#d7e2c8" fill-opacity=".16" stroke="#334943" stroke-width="11"/>
+            <circle r="89" fill="none" stroke="#f3e5bd" stroke-width="5"/>
+            <g id="front-spokes"><use href="#spokes"/></g>
+            <circle r="9" fill="#c4d2c8" stroke="#52695f" stroke-width="2.5"/>
+            <circle r="3" fill="#52695f"/>
+          </g>
+          <path d="M346 553A100 100 0 0 1 525 523M738 528A101 101 0 0 1 921 549" fill="none" stroke="#587168" stroke-width="6"/>
+          <path d="M346 553A100 100 0 0 1 525 523M738 528A101 101 0 0 1 921 549" fill="none" stroke="#d2ddd0" stroke-width="3"/>
+          <path d="M442 579L395 489H471M442 579L473 490" fill="none" stroke="#82998c" stroke-width="2.3"/>
+          <path d="M386 487h97" stroke="#435d53" stroke-width="7"/>
+          <path d="M389 483h91" stroke="#a8baac" stroke-width="3"/>
+          <path d="M551 445L614 576" fill="none" stroke="#9a554b" stroke-width="12"/>
+          <path d="M442 579L552 456 614 576 442 579M552 456L766 463 614 576M771 477L824 579" fill="none" stroke="#a65b4e" stroke-width="11"/>
+          <path d="M442 576L552 453 614 573 442 576M552 453L766 460 614 573M771 474L824 576" fill="none" stroke="#ed7865" stroke-width="7"/>
+          <path d="M565 454L753 460M773 488L816 568" fill="none" stroke="#ffad8c" stroke-width="2.2"/>
+          <path d="M641 456l42 1" stroke="#fff0d0" stroke-width="4"/>
+          <path d="M614 576L553 443 549 433" fill="none" stroke="#536d62" stroke-width="7"/>
+          <path d="M610 568L558 455" fill="none" stroke="#ed7865" stroke-width="9"/>
+          <path d="M520 430Q525 423 539 424L573 428Q582 430 579 438Q550 446 522 437Z" fill="#394f45" stroke="#29443d" stroke-width="2.5"/>
+          <path d="M527 429l39 4" fill="none" stroke="#76877b" stroke-width="2"/>
+          <path d="M763 448L778 496" fill="none" stroke="#ed7865" stroke-width="13"/>
+          <path d="M766 449L751 404Q748 395 761 392L792 383" fill="none" stroke="#536d62" stroke-width="8"/>
+          <path d="M766 449L751 404Q748 395 761 392L792 383" fill="none" stroke="#b6c8bc" stroke-width="3.5"/>
+          <path d="M785 385l28-2" stroke="#334943" stroke-width="10"/>
+          <path d="M797 387l13 11" stroke="#526b61" stroke-width="3"/>
+          <path d="M803 394Q845 425 786 479" fill="none" stroke="#5c7368" stroke-width="1.8"/>
+          <path d="M776 386l-9-5" stroke="#60776c" stroke-width="4"/>
+          <ellipse cx="768" cy="381" rx="10" ry="6" fill="#e9c576" stroke="#60776c" stroke-width="2"/>
+          <path d="M442 566L614 552A24 24 0 0 1 614 600L442 592A13 13 0 0 1 442 566Z" fill="#aabcaa" fill-opacity=".28" stroke="#617568" stroke-width="2"/>
+          <circle cx="614" cy="576" r="24" fill="#d2dbc9" stroke="#52695d" stroke-width="3"/>
+          <circle cx="614" cy="576" r="15" fill="#b0c0ae" stroke="#839686" stroke-width="1.5"/>
+          <g id="crank" transform="rotate(20 614 576)">
+            <path d="M586 576h56" stroke="#405b4e" stroke-width="6"/>
+            <path d="M587 574h54" stroke="#d2dace" stroke-width="2"/>
+          </g>
+          <g id="far-pedal" transform="translate(586 576)"><path d="M-14 0h28" stroke="#394f45" stroke-width="6"/></g>
+          <g id="near-pedal" transform="translate(642 576)"><path d="M-14 0h28" stroke="#394f45" stroke-width="6"/><path d="M-10-2h20" stroke="#b4bda8" stroke-width="1.5"/></g>
+          <circle cx="614" cy="576" r="6" fill="#eff0de" stroke="#52695d" stroke-width="2"/>
+        </g>
+
+        <g id="near-leg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path id="near-pants-outline" d="M555 449L651 484L636 558" stroke="#344a49" stroke-width="42"/>
+          <path id="near-pants" d="M555 449L651 484L636 558" stroke="#576968" stroke-width="36"/>
+          <path id="near-seam" d="M560 444L654 483L643 548" stroke="#72827b" stroke-width="2"/>
+          <path id="near-sock" d="M636 550L636 561" stroke="#f0efdf" stroke-width="21"/>
+        </g>
+        <g id="near-shoe" transform="translate(636 558) rotate(-5)"><use href="#shoe"/></g>
+
+        <!-- Photo-inspired character: light open hoodie, slim face, wavy hair and rectangular spectacles. -->
+        <g id="rider-upper" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M640 369L679 395 767 377Q780 375 791 380L791 389 777 391 680 413Q673 414 666 407L625 386Z" fill="#e8b391" stroke="#6e6857" stroke-width="2.5"/>
+          <path d="M633 360Q644 356 654 373L682 393 691 394 684 411Q672 417 662 405L627 387Z" fill="#bccbc5" stroke="#5b6e66" stroke-width="2.5"/>
+          <path d="M642 325L634 357Q645 374 666 361L674 335" fill="url(#skin-fill)" stroke="#716b5a" stroke-width="2.5"/>
+          <path d="M644 334Q654 343 671 341L667 350Q650 351 641 342Z" fill="#dca987"/>
+          <path d="M631 345Q616 338 598 350Q579 361 582 384L607 393 643 361Z" fill="#dce3dc" stroke="#61736a" stroke-width="2.6"/>
+          <path d="M628 350Q601 349 591 375L607 380 635 357" fill="#b9c9c1" stroke="#91a59a" stroke-width="1.8"/>
+          <path d="M616 359Q632 355 650 369Q642 396 625 422L599 460Q568 471 535 451Q529 439 540 425L579 377Q593 358 616 359Z" fill="url(#hoodie-fill)" stroke="#536a61" stroke-width="3"/>
+          <path d="M631 359Q643 365 650 369L626 408 595 458Q577 462 560 453L588 405Z" fill="#fffdf1" stroke="#afbbb0" stroke-width="1.8"/>
+          <path d="M633 359Q639 371 650 369" fill="none" stroke="#c7cdbf" stroke-width="3"/>
+          <path d="M620 359L630 362 600 407 572 459 537 450Q533 441 541 428L579 378Q598 357 620 359Z" fill="url(#hoodie-fill)" stroke="#62766c" stroke-width="2.3"/>
+          <path d="M646 371L651 373 628 416 606 457 592 461 614 415Z" fill="#d5dfd7" stroke="#7e9386" stroke-width="2"/>
+          <path d="M624 367L598 408 576 452" fill="none" stroke="#fafbef" stroke-width="3"/>
+          <path d="M543 437Q553 444 573 449L569 459Q548 457 535 450Z" fill="#c4d2c8" stroke="#7c9285" stroke-width="1.8"/>
+          <path d="M565 420l16-20M552 437l13-10M603 386l-18 19" fill="none" stroke="#afc0b5" stroke-width="2"/>
+          <path d="M580 416l-14 24 13 6" fill="none" stroke="#9aac9f" stroke-width="2"/>
+          <path d="M613 376Q610 389 601 399" fill="none" stroke="#faf9e9" stroke-width="3"/>
+          <path d="M602 397l-3 7" fill="none" stroke="#7e9386" stroke-width="2.5"/>
+          <path d="M643 377l-5 21" fill="none" stroke="#faf9e9" stroke-width="3"/>
+          <path d="M638 397l-1 5" fill="none" stroke="#7e9386" stroke-width="2.5"/>
+
+          <!-- Near sleeve and hand wrap naturally around the handlebar. -->
+          <path d="M708 400Q743 392 777 381Q784 374 792 379L805 383Q811 386 807 391Q804 394 798 391L790 388 780 397 720 418Z" fill="url(#skin-fill)" stroke="#756e5a" stroke-width="2.5"/>
+          <path d="M781 383l8 7M789 380l8 8M797 383l5 5" fill="none" stroke="#be9276" stroke-width="1.7"/>
+          <path d="M621 369Q635 365 646 381L673 405 706 396 719 416 681 433Q669 436 660 429L617 397Q606 382 621 369Z" fill="url(#hoodie-fill)" stroke="#536a61" stroke-width="3"/>
+          <path d="M625 378Q631 376 638 387L672 420 704 409" fill="none" stroke="#f5f7ec" stroke-width="3"/>
+          <path d="M656 411l9 12M666 405l4 10" fill="none" stroke="#a8bbb0" stroke-width="2"/>
+          <path d="M703 397L714 394 726 412 715 418Z" fill="#d3ddd3" stroke="#6f8376" stroke-width="2"/>
+          <path d="M709 397l11 17" fill="none" stroke="#f5f6e9" stroke-width="2"/>
+
+          <g id="portrait">
+            <path d="M613 243Q628 216 663 216Q701 211 715 242L715 272Q716 284 724 293Q728 299 715 304Q710 324 694 337Q680 348 660 340Q633 331 624 309L614 282Z" fill="url(#skin-fill)" stroke="#675f50" stroke-width="2.6"/>
+            <path d="M702 252Q715 264 710 282L719 296 710 300Q708 324 689 335Q700 324 700 308Z" fill="#e5ad89" opacity=".6"/>
+            <path d="M627 277Q610 260 605 277Q602 294 617 303L629 299Z" fill="#f0c3a0" stroke="#776953" stroke-width="2.4"/>
+            <path d="M619 281Q608 274 613 289L619 292" fill="none" stroke="#bd9073" stroke-width="2"/>
+            <path d="M631 283Q629 310 645 326" fill="none" stroke="#f9d8b8" stroke-width="4"/>
+            <ellipse cx="650" cy="305" rx="13" ry="6.5" fill="#e6a48c" opacity=".46"/>
+            <ellipse cx="703" cy="302" rx="7" ry="5" fill="#e6a48c" opacity=".35"/>
+            <path d="M684 288l-1 12 6 1" fill="none" stroke="#bc9070" stroke-width="1.8"/>
+            <path d="M670 314Q682 321 695 312" fill="none" stroke="#825e4c" stroke-width="2.5"/>
+            <path d="M677 325q6 2 11-1" fill="none" stroke="#d29f7e" stroke-width="1.6"/>
+            <path d="M641 265q12-5 23-1M687 263q10-4 18-1" fill="none" stroke="#47433a" stroke-width="3.5"/>
+            <g id="eyes" fill="#363e35">
+              <ellipse cx="657" cy="282" rx="3.1" ry="4"/><ellipse cx="696" cy="279" rx="2.9" ry="3.7"/>
+              <path d="M648 279q8-5 15 0M690 277q7-4 12 0" fill="none" stroke="#45453b" stroke-width="1.7"/>
+            </g>
+            <g id="glasses" transform="rotate(-3 674 279)" stroke="#454b43" stroke-width="3" fill="#f1f5e8" fill-opacity=".13">
+              <path d="M635 267h34l-1 22q-1 7-9 7h-14q-8 0-9-7Z"/>
+              <path d="M683 267h29l-1 20q-1 7-7 7h-13q-7 0-7-7Z"/>
+              <path d="M669 275q7-5 14 0M634 271l-17-4" fill="none"/>
+              <path d="M639 272h26M687 272h21" fill="none" stroke="#fffbea" stroke-width="1.5" opacity=".6"/>
+            </g>
+
+            <!-- Individually drawn waves retain the reference hairstyle instead of a generic hair cap. -->
+            <path d="M615 284L608 270Q596 260 602 243Q590 228 601 211Q601 194 620 189Q617 173 642 172Q657 155 678 168Q699 158 711 179Q734 175 739 198Q757 213 743 234Q746 251 725 256Q715 268 699 258Q681 272 665 259Q648 271 634 260Q630 277 627 290L621 292Z" fill="url(#hair-fill)" stroke="#343a32" stroke-width="3"/>
+            <path d="M607 237Q604 219 627 218Q613 204 630 190Q638 180 651 185" fill="none" stroke="#58564c" stroke-width="4.3"/>
+            <path d="M628 240Q651 245 660 225Q663 211 650 204Q639 197 643 187" fill="none" stroke="#57564d" stroke-width="4.6"/>
+            <path d="M656 180Q675 172 687 189Q701 211 683 224Q676 231 666 230" fill="none" stroke="#5e5b51" stroke-width="4.2"/>
+            <path d="M697 185Q721 190 721 211Q722 226 707 231" fill="none" stroke="#53534b" stroke-width="4.5"/>
+            <path d="M670 245Q691 253 701 235M715 246q18-5 18-22" fill="none" stroke="#4f5147" stroke-width="3.5"/>
+            <path d="M613 242q7 11 22 7M624 192q-5 7-3 14M657 178q11-3 18 1" fill="none" stroke="#777164" stroke-width="2.2" opacity=".65"/>
+            <path d="M603 216q-2 19 11 23M632 214q-7 18 8 21M687 192q10 19-1 28" fill="none" stroke="#272e28" stroke-width="3" opacity=".6"/>
+            <path d="M635 174q4-9 14-10M680 169q8-6 15-1" fill="none" stroke="#47483e" stroke-width="3"/>
+          </g>
+        </g>
+
+        <!-- A small breeze follows the rider. -->
+        <g id="breeze" fill="none" stroke="#f7fae9" stroke-width="3" stroke-linecap="round" opacity=".8">
+          <path d="M361 345h67q12 0 12-9t-10-8M383 369h47M349 369h17M415 391h28"/>
+        </g>
+        <g fill="#729b74" stroke="#5d8866" stroke-width="2" stroke-linejoin="round">
+          <path d="M44 760Q15 724 5 730Q9 750 36 760M46 760Q31 706 48 701Q65 714 50 757M53 760Q65 721 80 730Q85 746 57 760"/>
+          <path d="M1150 760Q1124 713 1138 709Q1155 716 1156 754M1157 760Q1160 702 1178 706Q1190 725 1166 757M1169 760Q1193 729 1204 741L1193 760"/>
+        </g>
+        <g fill="#fff6d8"><circle cx="80" cy="561" r="2.5"/><circle cx="867" cy="533" r="2"/><circle cx="916" cy="549" r="2.5"/></g>
+      </svg>
+    </figure>
+
+    <footer class="footer">
+      <p class="caption">微风作伴，慢慢骑就好。</p>
+      <button id="motion-toggle" type="button" hidden>
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path id="motion-icon" d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
+        <span id="motion-label">暂停骑行</span>
+      </button>
+    </footer>
+  </main>
+  <script>
+    (() => {
+      'use strict';
+      const byId = (id) => document.getElementById(id);
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const toggle = byId('motion-toggle');
+      const parts = Object.fromEntries([
+        'near-pants-outline', 'near-pants', 'near-seam', 'near-sock', 'near-shoe',
+        'far-pants-outline', 'far-pants', 'far-sock', 'far-shoe',
+        'near-pedal', 'far-pedal', 'crank', 'rear-spokes', 'front-spokes',
+        'rider-upper', 'road-marks', 'cloud-left', 'cloud-right', 'breeze', 'eyes'
+      ].map((id) => [id, byId(id)]));
+      const crank = { x: 614, y: 576, radius: 28 };
+      let running = !reducedMotion.matches;
+      let elapsed = 0;
+      let previousTime = null;
+      let frameId = null;
+
+      // Solve the knee from the fixed hip and moving ankle so each foot follows its pedal.
+      function drawLeg(side, angle, hip, upperLength, lowerLength) {
+        const pedal = { x: crank.x + Math.cos(angle) * crank.radius, y: crank.y + Math.sin(angle) * crank.radius };
+        const ankle = { x: pedal.x - 6, y: pedal.y - 18 };
+        const dx = ankle.x - hip.x;
+        const dy = ankle.y - hip.y;
+        const distance = Math.hypot(dx, dy);
+        const along = (upperLength ** 2 - lowerLength ** 2 + distance ** 2) / (2 * distance);
+        const across = Math.sqrt(Math.max(0, upperLength ** 2 - along ** 2));
+        const knee = { x: hip.x + (along * dx + across * dy) / distance, y: hip.y + (along * dy - across * dx) / distance };
+        const path = `M${hip.x} ${hip.y}L${knee.x.toFixed(2)} ${knee.y.toFixed(2)}L${ankle.x.toFixed(2)} ${(ankle.y - 4).toFixed(2)}`;
+        parts[`${side}-pants-outline`].setAttribute('d', path);
+        parts[`${side}-pants`].setAttribute('d', path);
+        parts[`${side}-sock`].setAttribute('d', `M${ankle.x} ${ankle.y - 8}L${ankle.x} ${ankle.y + 2}`);
+        parts[`${side}-shoe`].setAttribute('transform', `translate(${ankle.x} ${ankle.y})`);
+        parts[`${side}-pedal`].setAttribute('transform', `translate(${pedal.x} ${pedal.y})`);
+        if (side === 'near') {
+          parts['near-seam'].setAttribute('d', `M${hip.x + 5} ${hip.y - 7}L${knee.x + 6} ${knee.y - 3}L${ankle.x + 7} ${ankle.y - 11}`);
+        }
+      }
+
+      function draw() {
+        const phase = elapsed * 2.65 + 0.35;
+        const degrees = phase * 180 / Math.PI;
+        drawLeg('far', phase + Math.PI, { x: 546, y: 449 }, 93, 100);
+        drawLeg('near', phase, { x: 555, y: 449 }, 96, 103);
+        parts.crank.setAttribute('transform', `rotate(${degrees} 614 576)`);
+        parts['rear-spokes'].setAttribute('transform', `rotate(${degrees * 1.65})`);
+        parts['front-spokes'].setAttribute('transform', `rotate(${degrees * 1.65})`);
+        parts['road-marks'].setAttribute('patternTransform', `translate(${-(elapsed * 100) % 220} 0)`);
+        parts['rider-upper'].setAttribute('transform', `translate(0 ${Math.sin(phase * 2) * 0.8})`);
+        parts['cloud-left'].setAttribute('transform', `translate(${Math.sin(elapsed / 14) * 17} 0)`);
+        parts['cloud-right'].setAttribute('transform', `translate(${Math.sin(elapsed / 18) * -12} 0)`);
+        parts.breeze.setAttribute('opacity', String(.55 + Math.sin(elapsed * 2) * .2));
+        const blink = elapsed % 5.8;
+        parts.eyes.setAttribute('transform', blink > 5.55 && blink < 5.7 ? 'translate(0 251) scale(1 .1)' : '');
+      }
+
+      function tick(timestamp) {
+        frameId = null;
+        if (!running || document.hidden) return;
+        if (previousTime !== null) elapsed += Math.min((timestamp - previousTime) / 1000, .05);
+        previousTime = timestamp;
+        draw();
+        frameId = requestAnimationFrame(tick);
+      }
+
+      function syncMotion() {
+        if (frameId !== null) cancelAnimationFrame(frameId);
+        frameId = null;
+        previousTime = null;
+        byId('motion-label').textContent = running ? '暂停骑行' : '继续骑行';
+        byId('motion-icon').setAttribute('d', running ? 'M4 3h3v10H4zM9 3h3v10H9z' : 'M4 2.5v11L13 8z');
+        if (running && !document.hidden) frameId = requestAnimationFrame(tick);
+      }
+
+      toggle.addEventListener('click', () => { running = !running; syncMotion(); });
+      document.addEventListener('visibilitychange', syncMotion);
+      reducedMotion.addEventListener('change', (event) => { running = !event.matches; syncMotion(); });
+      draw();
+      toggle.hidden = false;
+      syncMotion();
+    })();
+  </script>
+</body>
+</html>
