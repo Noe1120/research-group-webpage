@@ -87,3 +87,49 @@ body.dark .members-note small{color:#984650}
 body.dark .recruitment-note small{color:#6046a0}
 body.dark .research-spark-one{color:#ff94b9}
 body.dark .recruitment-spark-one{color:#d5caff}
+/* Members archive: two cards per row without oversized avatar blocks. */
+.members-page .people-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.members-page .person-avatar{height:250px;aspect-ratio:auto}
+@media(max-width:580px){.members-page .people-grid{grid-template-columns:1fr}.members-page .person-avatar{height:220px}}
+
+/* Distinct member-card motifs: sakura, orbit, sports, and moonlit lake. */
+.members-page .person-avatar{position:relative;overflow:hidden;isolation:isolate;place-items:initial;margin-bottom:18px}
+.members-page .person-avatar:before{content:"";position:absolute;z-index:0;inset:20px;border:1px solid var(--motif-oval);border-radius:50%;transform:translateX(26%) rotate(-8deg)}
+.members-page .person-initial{position:absolute;z-index:3;left:34px;top:50%;font-size:clamp(64px,8vw,102px);font-weight:900;line-height:1;transform:translateY(-50%)}
+.members-page .member-motif{position:absolute;z-index:2;right:0;bottom:0;width:72%;height:100%;overflow:visible}
+.members-page .member-motif .motif-line{fill:none;stroke:var(--motif-line);stroke-linecap:round;stroke-linejoin:round}
+.members-page .member-motif .motif-accent{fill:var(--motif-accent)}
+.members-page .member-motif .motif-soft{fill:var(--motif-soft)}
+.members-page .person-card:nth-child(1) .person-avatar{background:#f24382;color:#fff;--motif-line:#713147;--motif-accent:#fff4f8;--motif-soft:#f7c45f;--motif-oval:rgba(255,255,255,.25)}
+.members-page .person-card:nth-child(2) .person-avatar{background:#27222c;color:#fff;--motif-line:#d7ccff;--motif-accent:#ff8fba;--motif-soft:#fff;--motif-oval:rgba(255,255,255,.22)}
+.members-page .person-card:nth-child(3) .person-avatar{background:#ded7ff;color:#25212b;--motif-line:#5f5272;--motif-accent:#f24382;--motif-soft:#fff;--motif-oval:rgba(37,33,43,.22)}
+.members-page .person-card:nth-child(4) .person-avatar{background:#28473e;color:#fff;--motif-line:#a8d4c7;--motif-accent:#ffc3d5;--motif-soft:#dceee8;--motif-oval:rgba(255,255,255,.22)}
+.members-page .sakura-motif{right:-8px;bottom:-5px;width:75%;height:96%;color:var(--motif-accent)}
+.members-page .sakura-motif .branch{fill:none;stroke:var(--motif-line);stroke-width:8;stroke-linecap:round}
+.members-page .sakura-motif .twig{fill:none;stroke:var(--motif-line);stroke-width:4;stroke-linecap:round}
+.members-page .sakura-motif .flower-center{fill:var(--motif-soft)}
+.members-page .orbit-motif .orbit-ring{stroke-width:2;opacity:.72}
+.members-page .orbit-motif .orbit-path{stroke-width:4;stroke-dasharray:7 12}
+.members-page .orbit-motif .orbit-node{fill:var(--motif-accent)}
+.members-page .orbit-motif .orbit-core{fill:none;stroke:var(--motif-soft);stroke-width:2}
+.members-page .sports-motif .field-line{stroke-width:2;opacity:.72}
+.members-page .sports-motif .motion-line{stroke-width:4;stroke-dasharray:9 11}
+.members-page .sports-motif .paddle-face{fill:var(--motif-accent);stroke:var(--motif-line);stroke-width:5}
+.members-page .sports-motif .paddle-handle{fill:var(--motif-line)}
+.members-page .sports-motif .ball-shell{fill:none;stroke:var(--motif-line);stroke-width:5}
+.members-page .sports-motif .ball-panel{fill:var(--motif-accent)}
+.members-page .lake-motif .moon{fill:var(--motif-accent)}
+.members-page .lake-motif .ridge{fill:var(--motif-soft);opacity:.2}
+.members-page .lake-motif .ridge-line{stroke-width:4}
+.members-page .lake-motif .water-line{stroke-width:3;opacity:.72}
+.members-page .lake-motif .reed{stroke-width:4}
+.members-page .member-traits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:11px;line-height:1.6}
+.members-page .member-traits li{min-width:0}
+.members-page .member-traits li:before{content:"·";margin-right:5px;color:var(--pink-deep);font-weight:900}
+@media(max-width:580px){.members-page .person-initial{left:25px}.members-page .member-motif{right:-10%;width:82%}.members-page .sakura-motif{right:-12%;width:82%}}
+
+/* Increase member-card copy while keeping the four surname initials unchanged. */
+.members-page .person-card>small{font-size:12px;line-height:1.4}
+.members-page .person-card>h3{margin:8px 0 12px;font-size:22px}
+.members-page .person-card>p{font-size:14px;line-height:1.8}
+.members-page .member-traits{font-size:14px;line-height:1.75;gap:5px 20px}
