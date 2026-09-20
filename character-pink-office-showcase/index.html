@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="粉色工位人物独立展示页">
+  <title>帅气加载中 · 人物展示</title>
+  <style>
+    :root {
+      --paper: #fff8fb;
+      --ink: #17151c;
+      --pink: #ff75a7;
+      --pink-soft: #ffd8e7;
+      --cyan: #3bd6ee;
+      --cyan-soft: #d9f8fc;
+      --line: #ded6dc;
+      --muted: #706871;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::before {
+      inset: 0;
+      border: 18px solid #fff;
+    }
+
+    body::after {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(23, 21, 28, .055);
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 48px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 34px 0 38px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 30px;
+    }
+
+    .topbar,
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0;
+    }
+
+    .archive {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .archive-mark {
+      width: 38px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      color: #fff;
+      background: var(--ink);
+      font-family: "Microsoft YaHei", sans-serif;
+      font-size: 18px;
+    }
+
+    .topbar-note,
+    .footer { color: var(--muted); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(280px, .72fr) minmax(560px, 1.45fr);
+      align-items: center;
+      gap: clamp(36px, 7vw, 96px);
+      padding: 38px 0 46px;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 22px;
+      color: #d92e70;
+      font: 700 11px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(58px, 7vw, 96px);
+      line-height: .94;
+      letter-spacing: 0;
+    }
+
+    h1 em {
+      color: var(--pink);
+      font-style: normal;
+    }
+
+    .quote {
+      max-width: 330px;
+      margin: 32px 0 0;
+      padding-left: 15px;
+      border-left: 3px solid var(--cyan);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 27px;
+    }
+
+    .tags span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .62);
+      font: 10px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+
+    .visual {
+      position: relative;
+      min-width: 0;
+      padding: 25px 25px 51px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 18px 18px 0 var(--pink-soft);
+    }
+
+    .visual::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      right: 36px;
+      width: 86px;
+      height: 31px;
+      background: var(--cyan-soft);
+      transform: rotate(3deg);
+    }
+
+    .visual::after {
+      content: "01";
+      position: absolute;
+      right: 17px;
+      bottom: 7px;
+      color: var(--pink-soft);
+      font: 800 66px/.75 Arial, sans-serif;
+    }
+
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      border-radius: 5px;
+      background: #111;
+    }
+
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 778 / 437;
+      object-fit: contain;
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-color: #fff;
+      border-style: solid;
+      opacity: .9;
+    }
+
+    .frame-corner:nth-of-type(1) {
+      top: 12px;
+      left: 12px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .frame-corner:nth-of-type(2) {
+      right: 12px;
+      bottom: 12px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .visual-meta {
+      position: absolute;
+      left: 25px;
+      right: 25px;
+      bottom: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font: 10px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+
+    .visual-meta strong { color: #d92e70; }
+    .visual-meta span { color: var(--muted); }
+
+    .code-note {
+      position: absolute;
+      z-index: 3;
+      left: -38px;
+      bottom: -34px;
+      width: 205px;
+      padding: 15px 17px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      color: #fff;
+      background: var(--ink);
+      box-shadow: 8px 8px 0 var(--cyan);
+      transform: rotate(-2deg);
+      font: 11px/1.7 ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+
+    .code-note b { color: var(--pink); }
+
+    .footer {
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer strong { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      body::before { border-width: 10px; }
+
+      .page {
+        width: min(680px, calc(100% - 34px));
+        padding-top: 24px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 58px;
+        padding-top: 42px;
+      }
+
+      .copy { max-width: 540px; }
+      .visual { box-shadow: 11px 11px 0 var(--pink-soft); }
+      .code-note { left: 18px; }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: calc(100% - 28px);
+        gap: 20px;
+      }
+
+      .topbar-note { display: none; }
+
+      .hero {
+        gap: 44px;
+        padding: 28px 0 54px;
+      }
+
+      h1 { font-size: clamp(52px, 17vw, 72px); }
+
+      .quote {
+        margin-top: 24px;
+        font-size: 13px;
+      }
+
+      .visual {
+        padding: 10px 10px 42px;
+        box-shadow: 7px 7px 0 var(--pink-soft);
+      }
+
+      .visual::before {
+        right: 18px;
+        width: 60px;
+        height: 23px;
+      }
+
+      .visual::after {
+        right: 9px;
+        font-size: 47px;
+      }
+
+      .visual-meta {
+        left: 11px;
+        right: 11px;
+        bottom: 14px;
+      }
+
+      .visual-meta span { display: none; }
+
+      .code-note {
+        left: 20px;
+        bottom: -38px;
+        width: 185px;
+        padding: 12px 14px;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        padding-bottom: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="archive">
+        <span class="archive-mark" aria-hidden="true">研</span>
+        <span>VISUAL ARCHIVE / 01</span>
+      </div>
+      <span class="topbar-note">PINK DESK · NIGHT SHIFT</span>
+    </header>
+
+    <main class="hero">
+      <section class="copy" aria-labelledby="page-title">
+        <span class="eyebrow">PORTRAIT / 粉色工位</span>
+        <h1 id="page-title">帅气<br><em>加载中</em></h1>
+        <p class="quote">“你就可以像我一样拥有帅气的容颜”</p>
+        <div class="tags" aria-label="画面关键词">
+          <span>PINK</span>
+          <span>CODE</span>
+          <span>OFFICE</span>
+        </div>
+      </section>
+
+      <figure class="visual">
+        <div class="photo-frame">
+          <img src="character.jpg" alt="身穿粉色上衣、戴着眼镜和灰色颈枕的人坐在摆有电脑与耳机的工位前">
+          <i class="frame-corner" aria-hidden="true"></i>
+          <i class="frame-corner" aria-hidden="true"></i>
+        </div>
+        <figcaption class="visual-meta">
+          <strong>FRAME 778 × 437</strong>
+          <span>DESK LOG / CAPTURE 01</span>
+        </figcaption>
+        <div class="code-note" aria-hidden="true">
+          <b>while</b> (awake) {<br>
+          &nbsp;&nbsp;build();<br>
+          }
+        </div>
+      </figure>
+    </main>
+
+    <footer class="footer">
+      <strong>CHARACTER SHOWCASE</strong>
+      <span>MAKE SOMETHING WORTH SHARING.</span>
+    </footer>
+  </div>
+</body>
+</html>
